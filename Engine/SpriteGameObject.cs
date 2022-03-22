@@ -28,7 +28,9 @@ public class SpriteGameObject : GameObject
         {
             return;
         }
-        spriteBatch.Draw(sprite.Sprite, GlobalPosition, null, shade, 0, Origin, scale, SpriteEffects.None, 0);
+
+        //spriteBatch.Draw(sprite.Sprite, GlobalPosition, null, shade, 0, Origin, scale, SpriteEffects.None, 0);
+        sprite.Draw(spriteBatch, GlobalPosition, Origin, scale, shade);
     }
 
     public SpriteSheet Sprite
