@@ -13,26 +13,23 @@ public class Animation : SpriteSheet
         this.isLooping = isLooping;
     }
 
-    public void Play()
+    public void Play(int startSheetIndex)
     {
-        sheetIndex = 0;
+        sheetIndex = startSheetIndex;
         time = 0.0f;
     }
 
     public void Update(GameTime gameTime)
     {
         time += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
         while (time > frameTime)
         {
             time -= frameTime;
-            if (isLooping)
-            {
-                sheetIndex = (sheetIndex + 1) % NumberSheetElements;
-            }
-            else
-            {
-                sheetIndex = Math.Min(sheetIndex + 1, NumberSheetElements - 1);
-            }
+            if (IsLooping) // go to the next frame, or loop around
+                SheetIndex = (SheetIndex + 1) % NumberOfSheetElements;
+            else // go to the next frame if it exists
+                SheetIndex = Math.Min(SheetIndex + 1, NumberOfSheetElements - 1);
         }
     }
 
@@ -48,12 +45,12 @@ public class Animation : SpriteSheet
 
     public int CountFrames
     {
-        get { return NumberSheetElements; }
+        get { return NumberOfSheetElements; }
     }
 
     public bool AnimationEnded
     {
-        get { return !isLooping && sheetIndex >= NumberSheetElements - 1; }
+        get { return !isLooping && sheetIndex >= NumberOfSheetElements - 1; }
     }
 }
 

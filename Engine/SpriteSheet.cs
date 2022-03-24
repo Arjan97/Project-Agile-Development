@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 public class SpriteSheet
 {
     protected Texture2D sprite;
+    Rectangle spriteRectangle;
     protected bool[] collisionMask;
     protected int sheetIndex;
     protected int sheetColumns;
@@ -29,7 +30,6 @@ public class SpriteSheet
             collisionMask[i] = colorData[i].A != 0;
         }
 
-        this.sheetIndex = sheetIndex;
         sheetColumns = 1;
         sheetRows = 1;
 
@@ -47,19 +47,18 @@ public class SpriteSheet
         {
             sheetRows = int.Parse(colRow[1]);
         }
+
+        SheetIndex = sheetIndex;
     }
 
     public void Draw(SpriteBatch spriteBatch, Vector2 position, Vector2 origin, float scale, Color color)
     {
-        int columnIndex = sheetIndex % sheetColumns;
-        int rowIndex = sheetIndex / sheetColumns % sheetRows;
-        Rectangle spritePart = new Rectangle(columnIndex * Width, rowIndex * Height, Width, Height);
         SpriteEffects spriteEffects = SpriteEffects.None;
         if (mirror)
         {
             spriteEffects = SpriteEffects.FlipHorizontally;
         }
-        spriteBatch.Draw(sprite, position, spritePart, color,
+        spriteBatch.Draw(sprite, position, spriteRectangle, color,
             radians, origin, scale, spriteEffects, 0.0f);
     }
 
@@ -105,21 +104,34 @@ public class SpriteSheet
         set { radians = value; }
     }
 
+    public int NumberOfSheetElements
+    {
+        get { return sheetColumns * sheetRows; }
+    }
+
     public int SheetIndex
     {
-        get
-        { return sheetIndex; }
+        get { return sheetIndex; }
         set
         {
-            if (value < sheetColumns * sheetRows && value >= 0)
+            if (value < NumberOfSheetElements && value >= 0)
             {
                 sheetIndex = value;
+
+                // recalculate the part of the sprite to draw
+                int columnIndex = sheetIndex % sheetColumns;
+                int rowIndex = sheetIndex / sheetColumns;
+                spriteRectangle = new Rectangle(columnIndex * Width, rowIndex * Height, Width, Height);
             }
         }
     }
 
-    public int NumberSheetElements
+    public Rectangle Bounds
     {
-        get { return sheetColumns * sheetRows; }
+        get
+        {
+            return new Rectangle(0, 0, Width, Height);
+        }
     }
+
 }
