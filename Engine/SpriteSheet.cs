@@ -37,6 +37,9 @@ public class SpriteSheet
         string[] assetSplit = assetname.Split('@');
         if (assetSplit.Length <= 1)
         {
+            // Set SheetIndex for Sprites not being a spritesheet
+            // so the whole sprite rectangle is used for drawing.
+            SheetIndex = sheetIndex;
             return;
         }
 
@@ -48,6 +51,8 @@ public class SpriteSheet
             sheetRows = int.Parse(colRow[1]);
         }
 
+        // Set SheetIndex for Spritesheet for multiple sprites inside
+        // so a partial rectangle part is used for drawing.
         SheetIndex = sheetIndex;
     }
 
