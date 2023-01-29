@@ -10,19 +10,21 @@ namespace BaseProject.GameObjects
 {
      class PowerUp : SpriteGameObject
     {
-        //public PowerUpType Type { get; set; }
         public int Duration;
         public bool IsActive;
         public int Timer;
         public string Name;
-        public PowerUp(Vector2 startPosition, int duration, string name, string assetName) : base(assetName)
+        private Random rand = new Random();
+        private int randomX, randomY;
+        public PowerUp(int duration, string name, string assetName) : base(assetName)
         {
-            //Type = type;
-            position = startPosition;
             IsActive = false;
             Duration = duration;
             Name = name;
             Timer = 0;
+            randomX = rand.Next(0, GameEnvironment.Screen.X - Width);
+            randomY = rand.Next(0, GameEnvironment.Screen.Y - Height);
+            position = new Vector2(randomX, randomY);
         }
 
         public void Activate()
@@ -36,12 +38,17 @@ namespace BaseProject.GameObjects
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            Timer += gameTime.ElapsedGameTime.Milliseconds;
-            if (Timer >= Duration)
+            if (IsActive)
             {
-                 Deactivate();
-            }
+                Timer++;
+                System.Diagnostics.Debug.WriteLine("timer:" + Timer);
+                System.Diagnostics.Debug.WriteLine("dura:" + Duration);
+                if (Timer >= Duration)
+                {
+                    Deactivate();
+                    Timer = 0;
+                }
+            } 
         }
     }
 }

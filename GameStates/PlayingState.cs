@@ -32,9 +32,9 @@ namespace BaseProject.GameStates
 
             powerUps = new List<PowerUp>
             {
-                new SpeedPowerup(new Vector2(200, 200))
+                new SpeedPowerup(puck)
             };
-            Add(powerUps[0]);
+           // Add(powerUps[0]);
 
 
         }
@@ -72,12 +72,20 @@ namespace BaseProject.GameStates
                 powerup.Update(gameTime);
             }
             //Checks collision with powerup
-            if (puck.CollidesWith(powerUps[0]))
+           if (puck.CollidesWith(powerUps[0]))
             {
                 powerUps[0].Activate();
                 System.Diagnostics.Debug.WriteLine("powerupped!");
+                Remove(powerUps[0]);
             }
+           
 
+            if (!powerUps[0].IsActive && rand.Next(0, 100) == 50)
+            {
+                //powerUps[0].Activate();
+                Add(powerUps[0]);
+                System.Diagnostics.Debug.WriteLine("powerupped!");
+            }
         }
         public override void HandleInput(InputHelper inputHelper)
         {

@@ -9,20 +9,21 @@ namespace BaseProject.GameObjects
 {
      class SpeedPowerup : PowerUp
     {
-        public SpeedPowerup(Vector2 position) : base(position, 100, "speed", "speedimg")
+        private Puck puck;
+        public SpeedPowerup(Puck puck) : base(100, "speed", "speedimg")
         {
-            IsActive = false;
+            this.puck = puck;
         }
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             if (IsActive)
             {
-               Velocity *= 2f;
+               puck.Velocity *= 1.5f;
                 System.Diagnostics.Debug.WriteLine("sneller!");
             } else if (!IsActive)
             {
-               Velocity /= 2f;
+               Velocity /= 1.5f;
             }
         }
     }
