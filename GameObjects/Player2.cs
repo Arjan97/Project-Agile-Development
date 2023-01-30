@@ -8,7 +8,6 @@ namespace BaseProject.GameObjects
 {
      class Player2 : PlayerBase
     {
-
         public Player2(Vector2 startPosition, string assetName) : base(startPosition, assetName)
         {
 
@@ -18,6 +17,7 @@ namespace BaseProject.GameObjects
         {
             base.Update(gameTime);
         }
+        
 
         public override void HandleInput(InputHelper inputHelper)
         {

@@ -15,9 +15,9 @@ namespace BaseProject
             ApplyResolutionSettings();
 
             GameStateManager.AddGameState("playingState", new PlayingState());
-            GameStateManager.SwitchTo("playingState");
+            GameStateManager.AddGameState("menuState", new MenuState());
+            GameStateManager.SwitchTo("menuState");
 
         }
-
     }
 }

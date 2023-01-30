@@ -45,8 +45,8 @@ namespace BaseProject.GameObjects
                 System.Diagnostics.Debug.WriteLine("dura:" + Duration);
                 if (Timer >= Duration)
                 {
-                    Deactivate();
                     Timer = 0;
+                    Deactivate();
                 }
             } 
         }
