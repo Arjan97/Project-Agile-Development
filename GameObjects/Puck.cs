@@ -11,7 +11,7 @@ namespace BaseProject.GameObjects
         public Puck(Vector2 startPosition, string assetName) : base(assetName)
         {
             this.position = startPosition;
-            maxSpeed = 500f;
+            maxSpeed = 600f;
         }
 
         public override void Update(GameTime gameTime)

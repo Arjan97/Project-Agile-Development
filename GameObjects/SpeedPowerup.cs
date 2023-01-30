@@ -19,11 +19,11 @@ namespace BaseProject.GameObjects
             base.Update(gameTime);
             if (IsActive)
             {
-               puck.Velocity *= 1.5f;
+               puck.Velocity *= 1.1f;
                 System.Diagnostics.Debug.WriteLine("sneller!");
             } else if (!IsActive)
             {
-               Velocity /= 1.5f;
+               Velocity /= 1.1f;
             }
         }
     }
