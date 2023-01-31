@@ -14,25 +14,22 @@ namespace BaseProject.GameStates
         private int selectedButton = 0;
         public MenuState()
         {
-            background = new SpriteGameObject("background");
+            background = new SpriteGameObject("veld");
             Add(background);
 
-            title = new SpriteGameObject("title", 0);
+            title = new SpriteGameObject("titel", 0);
             title.Origin = title.Center;
             title.Position = new Vector2(GameEnvironment.Screen.X / 2, 50);
-            title.Scale = 0.5f;
             Add(title);
 
-            playButton = new SpriteGameObject("play", 1);
+            playButton = new SpriteGameObject("start", 1);
             playButton.Origin = playButton.Center;
             playButton.Position = new Vector2(GameEnvironment.Screen.X / 2, 300);
-            playButton.Scale = 0.5f;
             Add(playButton);
 
-            quitButton = new SpriteGameObject("exit", 1);
+            quitButton = new SpriteGameObject("stoppen", 1);
             quitButton.Origin = quitButton.Center;
             quitButton.Position = new Vector2(GameEnvironment.Screen.X / 2, 500);
-            quitButton.Scale = 0.5f;
             Add(quitButton);
         }
         public override void HandleInput(InputHelper inputHelper)
@@ -57,13 +54,13 @@ namespace BaseProject.GameStates
 
             if (selectedButton == 0)
             {
-                playButton.Shade = Color.Yellow;
-                quitButton.Shade = Color.White;
+                //playButton.Shade = Color.Yellow;
+                //quitButton.Shade = Color.White;
             }
             else
             {
-                playButton.Shade = Color.White;
-                quitButton.Shade = Color.Yellow;
+                //playButton.Shade = Color.White;
+                //quitButton.Shade = Color.Yellow;
             }
 
             if (inputHelper.KeyPressed(Keys.Enter))

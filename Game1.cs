@@ -6,7 +6,7 @@ using BaseProject.GameStates;
 namespace BaseProject
 {
     public class Game1 : GameEnvironment
-    {      
+    {
         protected override void LoadContent()
         {
             base.LoadContent();
@@ -16,6 +16,7 @@ namespace BaseProject
 
             GameStateManager.AddGameState("playingState", new PlayingState());
             GameStateManager.AddGameState("menuState", new MenuState());
+            GameStateManager.AddGameState("gameoverState", new GameOverState());
             GameStateManager.SwitchTo("menuState");
 
         }

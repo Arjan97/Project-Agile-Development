@@ -97,6 +97,7 @@ public class SpriteGameObject : GameObject
         }
     }
 
+    //aangepast om scale mee in de collision te verwerken
     public bool CollidesWith(SpriteGameObject obj)
     {
         if (!visible || !obj.visible || !BoundingBox.Intersects(obj.BoundingBox))
@@ -116,8 +117,8 @@ public class SpriteGameObject : GameObject
         {
             for (int y = 0; y < b.Height; y++)
             {
-                int thisx = b.X - (int)(GlobalPosition.X - origin.X) + x;
-                int thisy = b.Y - (int)(GlobalPosition.Y - origin.Y) + y;
+                int thisx = b.X - (int)(GlobalPosition.X - origin.X * Scale) + x;
+                int thisy = b.Y - (int)(GlobalPosition.Y - origin.Y * Scale) + y;
                 int objx = b.X - (int)(obj.GlobalPosition.X - obj.origin.X) + x;
                 int objy = b.Y - (int)(obj.GlobalPosition.Y - obj.origin.Y) + y;
                 if (sprite.IsTranslucent(thisx, thisy) && obj.sprite.IsTranslucent(objx, objy))

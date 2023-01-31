@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using BaseProject.GameObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -94,5 +96,10 @@ public class GameObjectList : GameObject
         {
             obj.Reset();
         }
+    }
+
+    internal IEnumerable<PlayerBase> GetObjects(string v)
+    {
+        throw new NotImplementedException();
     }
 }

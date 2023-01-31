@@ -8,7 +8,7 @@ namespace BaseProject.GameObjects
 {
      class Player1 : PlayerBase
     {
-        public Player1(Vector2 startPosition, string assetName) : base(startPosition, assetName)
+        public Player1(Vector2 startPosition, string assetName) : base(startPosition, 2, assetName)
         {
 
         }

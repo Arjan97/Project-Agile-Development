@@ -4,26 +4,28 @@ using System;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Text;
+using BaseProject.GameStates;
 
 namespace BaseProject.GameObjects
 {
-     class SpeedPowerup : PowerUp
+    class SpeedPowerup : PowerUp
     {
-        private Puck puck;
-        public SpeedPowerup(Puck puck) : base(100, "speed", "speedimg")
+        private PlayingState playingState;
+        public SpeedPowerup(PlayingState playingState, int duration, string assetName) : base(playingState, duration, assetName)
         {
-            this.puck = puck;
+            this.playingState = playingState;
         }
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             if (IsActive)
             {
-               puck.Velocity *= 1.1f;
+               playingState.puck.Velocity *= 1.3f;
                 System.Diagnostics.Debug.WriteLine("sneller!");
-            } else if (!IsActive)
+            } else if (!IsActive && Timer >= Duration)
             {
-               Velocity /= 1.1f;
+                playingState.puck.Velocity /= 1.3f;
+                Timer = 0;
             }
         }
     }
