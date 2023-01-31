@@ -158,7 +158,7 @@ namespace BaseProject.GameStates
                 //scores[2].Text = "Player " + player.GetNumber() + " wins!";
                 //scores[2].Position = respawnPosition;
                 //Add(scores[2]);
-                playSound("win");
+                //playSound("win");
                 Add(win1);
                 //GameEnvironment.GameStateManager.SwitchTo("gameoverState");
             }
