@@ -132,7 +132,7 @@ namespace BaseProject.GameStates
                 }
             }
 
-            if (players[0].gameOver))
+            if (players[0].gameOver)
             {
                 Remove(powerUps[0]);
                 Remove(powerUps[1]);
