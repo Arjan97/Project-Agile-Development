@@ -15,7 +15,7 @@ namespace BaseProject.GameObjects
         private int score;
         private int scoreMax;
         private int number;
-        public bool gameOver, lastHit;
+        public bool gameOver, lastHit, powerUpped;
         public float originalScale;
         public PlayerBase(Vector2 startPosition, int number, string assetName) : base(assetName)
         {
@@ -25,10 +25,11 @@ namespace BaseProject.GameObjects
             velocity = Vector2.Zero;
             screenWidth = GameEnvironment.Screen.X / 2 - 50;
             screenHeight = GameEnvironment.Screen.Y - 40;
-            scoreMax = 2;
+            scoreMax = 4;
             this.number = number;
             gameOver = false;
             lastHit = false;
+            powerUpped = false;
             origin = Center;
         }
         public override void Update(GameTime gameTime)

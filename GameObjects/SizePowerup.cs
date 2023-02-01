@@ -18,12 +18,32 @@ namespace BaseProject.GameObjects
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-               ApplySize();
-                
+            sizeIncrease();
         }
-        public void RemovePowerUp()
+        public void sizeIncrease()
         {
-            //puck.Scale /= increaseAmount;
+            if (limit == 1)
+            {
+                if (playingState.players[0].lastHit && IsActive)
+                {
+                    playingState.players[0].Scale *= 1.5f;
+                    playingState.players[0].lastHit = false;
+
+                }
+                if (playingState.players[1].lastHit && IsActive)
+                {
+                    playingState.players[1].Scale *= 1.5f;
+                    playingState.players[1].lastHit = false;
+
+                }
+            } else if (!IsActive)
+            {
+                    playingState.players[1].RevertScale();
+                    System.Diagnostics.Debug.WriteLine("uit ermee!");
+               
+                    playingState.players[0].RevertScale();
+                    System.Diagnostics.Debug.WriteLine("uit ermee!");
+            }
         }
     }
 }

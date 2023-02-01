@@ -8,10 +8,12 @@ namespace BaseProject.GameObjects
      class Puck : SpriteGameObject
     {
         public float maxSpeed;
+        public float speedIncr;
         public Puck(Vector2 startPosition, string assetName) : base(assetName)
         {
             this.position = startPosition;
             maxSpeed = 300f;
+            speedIncr = 1.02f;
             origin = Center;
         }
 

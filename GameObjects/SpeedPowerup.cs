@@ -18,14 +18,13 @@ namespace BaseProject.GameObjects
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (IsActive)
+            //increases velocity and when duration is up, reverts back
+            if (IsActive && Timer <= Duration)
             {
-               playingState.puck.Velocity *= 1.3f;
-                System.Diagnostics.Debug.WriteLine("sneller!");
+               playingState.puck.Velocity *= 1.05f;
             } else if (!IsActive && Timer >= Duration)
             {
-                playingState.puck.Velocity /= 1.3f;
-                Timer = 0;
+                playingState.puck.Velocity /= 1.05f;
             }
         }
     }
