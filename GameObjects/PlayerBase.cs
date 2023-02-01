@@ -25,7 +25,7 @@ namespace BaseProject.GameObjects
             velocity = Vector2.Zero;
             screenWidth = GameEnvironment.Screen.X / 2 - 50;
             screenHeight = GameEnvironment.Screen.Y - 40;
-            scoreMax = 4;
+            scoreMax = 1;
             this.number = number;
             gameOver = false;
             lastHit = false;

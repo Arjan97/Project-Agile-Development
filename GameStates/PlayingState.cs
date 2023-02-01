@@ -94,6 +94,7 @@ namespace BaseProject.GameStates
                 // Reset the puck's position and velocity and deactivates powerups
                 powerUps[0].Deactivate();
                 Remove(powerUps[0]);
+                Remove(powerUps[1]);
                 Remove(puck);
                 puck.Position = respawnPosition;
                 puck.Velocity = respawnVelocity;
@@ -109,6 +110,7 @@ namespace BaseProject.GameStates
                 Vector2 random = new Vector2(rand.Next(-200, 200), rand.Next(-200, 200));
                 powerUps[0].Deactivate();
                 Remove(powerUps[0]);
+                Remove(powerUps[1]);
                 Remove(puck);
                 puck.Position = respawnPosition;
                 puck.Velocity = respawnVelocity;
