@@ -13,7 +13,7 @@ namespace BaseProject.GameObjects
         {
             this.position = startPosition;
             maxSpeed = 300f;
-            speedIncr = 1.02f;
+            speedIncr = 1.01f;
             origin = Center;
         }
 

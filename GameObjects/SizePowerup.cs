@@ -18,9 +18,9 @@ namespace BaseProject.GameObjects
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            sizeIncrease();
+            SizeIncrease();
         }
-        public void sizeIncrease()
+        public void SizeIncrease()
         {
             if (limit == 1)
             {
@@ -39,10 +39,8 @@ namespace BaseProject.GameObjects
             } else if (!IsActive)
             {
                     playingState.players[1].RevertScale();
-                    System.Diagnostics.Debug.WriteLine("uit ermee!");
-               
                     playingState.players[0].RevertScale();
-                    System.Diagnostics.Debug.WriteLine("uit ermee!");
+                    //System.Diagnostics.Debug.WriteLine("uit ermee!");
             }
         }
     }

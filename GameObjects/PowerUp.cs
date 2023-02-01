@@ -30,6 +30,7 @@ namespace BaseProject.GameObjects
         public void Activate()
         {
             IsActive = true;
+            limit--;
         }
         public void Deactivate()
         {
@@ -43,7 +44,7 @@ namespace BaseProject.GameObjects
             base.Update(gameTime);
             if (IsActive)
             {
-                limit--;
+                
                 Timer++;
                 System.Diagnostics.Debug.WriteLine("timer:" + Timer);
                 System.Diagnostics.Debug.WriteLine("dura:" + Duration);

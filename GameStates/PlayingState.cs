@@ -15,7 +15,6 @@ namespace BaseProject.GameStates
         private Vector2 respawnVelocity;
         private Vector2 respawnPosition;
         private SpriteGameObject background, win1, win2;
-        private bool gamePaused = false;
         public PlayingState()
         {
             //background instantiation using engine spritegameobject
@@ -95,8 +94,10 @@ namespace BaseProject.GameStates
                 // Reset the puck's position and velocity and deactivates powerups
                 powerUps[0].Deactivate();
                 Remove(powerUps[0]);
+                Remove(puck);
                 puck.Position = respawnPosition;
                 puck.Velocity = respawnVelocity;
+                Add(puck);
                 //playerscore adding and updating
                 players[0].AddPoint();
                 players[0].CheckScore();
@@ -108,8 +109,10 @@ namespace BaseProject.GameStates
                 Vector2 random = new Vector2(rand.Next(-200, 200), rand.Next(-200, 200));
                 powerUps[0].Deactivate();
                 Remove(powerUps[0]);
+                Remove(puck);
                 puck.Position = respawnPosition;
                 puck.Velocity = respawnVelocity;
+                Add(puck);
                 //playerscore adding and updating
                 players[1].AddPoint();
                 players[1].CheckScore();
